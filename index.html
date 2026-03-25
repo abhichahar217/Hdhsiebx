@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hdhsiebx</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #FFD700;
+    --gold2: #FFA500;
+    --purple: #6A0DAD;
+    --purple2: #9B30FF;
+    --blue-dark: #0a0a1a;
+    --blue-mid: #12123a;
+    --blue-card: #1a1a40;
+    --blue-card2: #22226a;
+    --text: #f0f0ff;
+    --text-muted: #9090bb;
+    --green: #00e676;
+    --red: #ff3d6e;
+    --orange: #ff7043;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--blue-dark);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── BACKGROUND ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(106,13,173,0.35) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 100%, rgba(255,165,0,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 60% 40%, rgba(0,100,255,0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,10,26,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,215,0,0.15);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'Black Ops One', cursive;
+    font-size: 1.5rem;
+    background: linear-gradient(90deg, var(--gold), var(--purple2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+  }
+  .nav-links { display: flex; gap: 1.8rem; }
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 0.85rem;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--text-muted); text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    overflow: hidden;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(255,215,0,0.4);
+    border-radius: 999px;
+    padding: 4px 18px;
+    margin-bottom: 1.2rem;
+    animation: fadeUp 0.5s ease both;
+  }
+  .hero h1 {
+    font-family: 'Black Ops One', cursive;
+    font-size: clamp(3rem, 9vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: 4px;
+    background: linear-gradient(135deg, #fff 0%, var(--gold) 40%, var(--purple2) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-top: 0.8rem;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-stats {
+    display: flex; justify-content: center; gap: 3rem;
+    margin-top: 3rem;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat-num {
+    font-family: 'Black Ops One', cursive;
+    font-size: 2.8rem;
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+  .hero-divider {
+    width: 80px; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--purple2));
+    margin: 2.5rem auto 0;
+    border-radius: 2px;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    position: relative; z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+  .section-header {
+    display: flex; align-items: baseline; gap: 1rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255,215,0,0.15);
+    padding-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Black Ops One', cursive;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    letter-spacing: 2px;
+    color: var(--gold);
+  }
+  .section-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ── ALL-TIME LEADERBOARD ── */
+  .leaderboard { display: flex; flex-direction: column; gap: 0.75rem; }
+  .lb-row {
+    display: grid;
+    grid-template-columns: 48px 1fr repeat(5, 80px) 90px;
+    align-items: center;
+    gap: 1rem;
+    background: var(--blue-card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    transition: transform .2s, border-color .2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .lb-row:hover { transform: translateX(4px); border-color: rgba(255,215,0,0.3); }
+  .lb-row.rank-1 { border-color: rgba(255,215,0,0.5); background: linear-gradient(90deg, rgba(255,215,0,0.08), var(--blue-card)); }
+  .lb-row.rank-2 { border-color: rgba(192,192,192,0.4); }
+  .lb-row.rank-3 { border-color: rgba(205,127,50,0.4); }
+  .lb-rank {
+    font-family: 'Black Ops One', cursive;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  .rank-1 .lb-rank { color: var(--gold); }
+  .rank-2 .lb-rank { color: #C0C0C0; }
+  .rank-3 .lb-rank { color: #CD7F32; }
+  .lb-rank-other { color: var(--text-muted); font-size: 1rem; }
+  .lb-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 1.15rem;
+    letter-spacing: 0.5px;
+  }
+  .lb-col-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 1rem;
+    text-align: center; color: var(--text-muted);
+  }
+  .lb-total {
+    font-family: 'Black Ops One', cursive;
+    font-size: 1.3rem; color: var(--gold);
+    text-align: right;
+  }
+  .lb-header {
+    display: grid;
+    grid-template-columns: 48px 1fr repeat(5, 80px) 90px;
+    gap: 1rem;
+    padding: 0 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+  .lb-header span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(144,144,187,0.6);
+    text-align: center;
+  }
+  .lb-header span:nth-child(2) { text-align: left; }
+  .lb-header span:last-child { text-align: right; }
+
+  /* ── SEASON TABS ── */
+  .tabs {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .tab-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 0.85rem;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 8px 22px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: transparent;
+    color: var(--text-muted);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .tab-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .tab-btn.active {
+    background: linear-gradient(135deg, var(--purple), var(--purple2));
+    border-color: transparent;
+    color: #fff;
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Season table */
+  .season-table-wrap { overflow-x: auto; }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+  thead th {
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(144,144,187,0.7);
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: background .15s;
+  }
+  tbody tr:hover { background: rgba(255,255,255,0.03); }
+  tbody td {
+    padding: 12px 14px;
+    font-size: 1rem; font-weight: 600;
+    color: var(--text);
+  }
+  tbody td.num { color: var(--gold); font-size: 1.1rem; }
+  tbody td.rank-badge {
+    font-family: 'Black Ops One', cursive;
+    font-size: 1rem;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 999px;
+  }
+  .badge-gold { background: rgba(255,215,0,0.15); color: var(--gold); border: 1px solid rgba(255,215,0,0.3); }
+  .badge-silver { background: rgba(192,192,192,0.1); color: #C0C0C0; border: 1px solid rgba(192,192,192,0.2); }
+  .badge-bronze { background: rgba(205,127,50,0.1); color: #CD7F32; border: 1px solid rgba(205,127,50,0.2); }
+
+  /* Season info cards */
+  .season-info {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem; margin-bottom: 2rem;
+  }
+  .info-card {
+    background: var(--blue-card);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+  }
+  .info-card-label {
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+  }
+  .info-card-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 1.05rem;
+    color: var(--gold);
+  }
+  .info-card-val.purple { color: var(--purple2); }
+  .info-card-val.green { color: var(--green); }
+  .info-card-val.orange { color: var(--orange); }
+
+  /* ── SEASON WINNERS ── */
+  .winners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.2rem;
+  }
+  .winner-card {
+    background: var(--blue-card);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform .2s, border-color .2s;
+  }
+  .winner-card:hover { transform: translateY(-4px); border-color: rgba(255,215,0,0.3); }
+  .winner-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--purple2));
+  }
+  .wc-season {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+  }
+  .wc-winner {
+    font-family: 'Black Ops One', cursive;
+    font-size: 1.6rem;
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 0.3rem;
+  }
+  .wc-pts {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  .wc-pts span { color: var(--green); }
+  .wc-trophy { font-size: 2.5rem; position: absolute; right: 1.2rem; top: 1.2rem; opacity: 0.4; }
+  .wc-row { margin-top: 0.8rem; font-size: 0.85rem; color: var(--text-muted); font-family: 'Barlow Condensed', sans-serif; }
+  .wc-row strong { color: var(--text); }
+
+  /* ── PROOF PAGE ── */
+  .proof-intro {
+    background: var(--blue-card);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+  .proof-intro strong { color: var(--gold); }
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2rem;
+  }
+  .proof-card {
+    background: var(--blue-card);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color .2s, transform .2s;
+  }
+  .proof-card:hover { border-color: rgba(155,48,255,0.4); transform: translateY(-3px); }
+  .proof-card-head {
+    background: var(--blue-card2);
+    padding: 0.8rem 1rem;
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .proof-card-icon { font-size: 1.3rem; }
+  .proof-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+  .proof-card-body {
+    padding: 1rem;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .proof-card-body strong { color: var(--text); display: block; margin-bottom: 0.3rem; }
+  .proof-placeholder {
+    background: rgba(255,255,255,0.03);
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    color: rgba(144,144,187,0.4);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    font-family: 'Barlow Condensed', sans-serif;
+    margin-top: 0.6rem;
+  }
+
+  /* ── POINTS SCORING ── */
+  .scoring-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .score-item {
+    background: var(--blue-card);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .score-item-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.88rem; font-weight: 600;
+    color: var(--text-muted);
+  }
+  .score-item-pts {
+    font-family: 'Black Ops One', cursive;
+    font-size: 1.3rem; color: var(--gold);
+  }
+
+  /* ── RECORD CARDS ── */
+  .records-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem; margin-bottom: 3rem;
+  }
+  .record-card {
+    background: var(--blue-card);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 1.2rem;
+    text-align: center;
+    transition: transform .2s;
+  }
+  .record-card:hover { transform: translateY(-3px); }
+  .record-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+  .record-val {
+    font-family: 'Black Ops One', cursive;
+    font-size: 1.5rem; color: var(--gold);
+  }
+  .record-desc {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--text-muted); margin-top: 0.3rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(144,144,187,0.4);
+  }
+  footer span { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 700px) {
+    .nav-links { display: none; }
+    .lb-row, .lb-header { grid-template-columns: 40px 1fr repeat(2,60px) 70px; }
+    .lb-row .lb-col-val:nth-child(n+4):nth-child(-n+7):not(:last-child),
+    .lb-header span:nth-child(n+4):nth-child(-n+7):not(:last-child) { display: none; }
+    .hero-stats { gap: 1.5rem; }
+  }
+
+  /* ── HIGHLIGHT BAR ANIMATION ── */
+  .bar-wrap { background: rgba(255,255,255,0.05); border-radius: 4px; height: 6px; margin-top: 6px; }
+  .bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--purple2), var(--gold)); transition: width 1s ease; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Hdhsiebx</div>
+  <div class="nav-links">
+    <a href="#alltime">All-Time</a>
+    <a href="#seasons">Seasons</a>
+    <a href="#winners">Hall of Fame</a>
+    <a href="#records">Records</a>
+    <a href="#scoring">Scoring</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🏏 IPL Prediction League</div>
+  <h1>HDHSIEBX</h1>
+  <p class="hero-sub">Parampara. Pratishtha. Anushashan.</p>
+  
+
+<!-- ALL-TIME LEADERBOARD -->
+<section id="alltime">
+  <div class="section-header">
+    <h2 class="section-title">All-Time Standings</h2>
+    <span class="section-tag">IPL 2021–2026</span>
+  </div>
+
+  <div class="lb-header">
+    <span>#</span>
+    <span>Player</span>
+    <span>2023</span>
+    <span>2024</span>
+    <span>2025</span>
+    <span>2026</span>
+    <span>Seasons</span>
+    <span>Total Pts</span>
+     
+  </div>
+  <div class="leaderboard">
+    <!-- Row data: [rank, name, 2021, 2022, 2023, 2024, seasons, total] -->
+    <div class="lb-row rank-1">
+      <div class="lb-rank">1</div>
+      <div class="lb-name">Vivek 🔥</div>
+      <div class="lb-col-val">54</div>
+      <div class="lb-col-val">40</div>
+      <div class="lb-col-val">70</div>
+      <div class="lb-col-val">0</div>
+      <div class="lb-col-val">5/5</div>
+      <div class="lb-total">164</div>
+      
+
+    </div>
+    <div class="lb-row rank-2">
+      <div class="lb-rank">2</div>
+      <div class="lb-name">Abhi</div>
+      <div class="lb-col-val">64</div>
+      <div class="lb-col-val">53</div>
+      <div class="lb-col-val">40</div>
+      <div class="lb-col-val">0</div>
+      <div class="lb-col-val">5/5</div>
+      <div class="lb-total">157</div>
+    </div>
+    <div class="lb-row rank-3">
+      <div class="lb-rank">3</div>
+      <div class="lb-name">Vikrant</div>
+      <div class="lb-col-val">47</div>
+      <div class="lb-col-val">41</div>
+      <div class="lb-col-val">46</div>
+      <div class="lb-col-val">0</div>
+      <div class="lb-col-val">5/5</div>
+      <div class="lb-total">134</div>
+    </div>
+    <div class="lb-row">
+      <div class="lb-rank lb-rank-other">4</div>
+      <div class="lb-name">Rudra</div>
+      <div class="lb-col-val"></div>
+      <div class="lb-col-val">17</div>
+      <div class="lb-col-val">60</div>
+      <div class="lb-col-val">0</div>
+      <div class="lb-col-val">3/5</div>
+      <div class="lb-total">77</div>
+    </div>
+    <div class="lb-row">
+      <div class="lb-rank lb-rank-other">5</div>
+      <div class="lb-name">Yash</div>
+      <div class="lb-col-val"></div>
+      <div class="lb-col-val"></div>
+      <div class="lb-col-val">50</div>
+      <div class="lb-col-val">0</div>
+      <div class="lb-col-val">1/5</div>
+      <div class="lb-total">50</div>
+    </div>
+  </div>
+</section>
+
+<!-- SEASON STANDINGS -->
+<section id="seasons">
+  <div class="section-header">
+    <h2 class="section-title">Season Standings</h2>
+    <span class="section-tag">Match-by-match breakdown</span>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('s2025')">IPL 2025</button>
+    <button class="tab-btn" onclick="showTab('s2024')">IPL 2024</button>
+    <button class="tab-btn" onclick="showTab('s2023')">IPL 2023</button>
+    <button class="tab-btn" onclick="showTab('s2022')">IPL 2022</button>
+    <button class="tab-btn" onclick="showTab('s2021')">IPL 2021</button>
+  </div>
+
+  <!-- 2025 -->
+  <div class="tab-content active" id="s2025">
+    <div class="season-info">
+      <div class="info-card">
+        <div class="info-card-label">🏆 Season Winner</div>
+        <div class="info-card-val">Vivek</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">🏏 IPL Champion</div>
+        <div class="info-card-val purple">RCB</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">🟠 Orange Cap</div>
+        <div class="info-card-val orange">Sai Sudarshan</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">🟣 Purple Cap</div>
+        <div class="info-card-val purple">Prasidh Krishna</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">⭐ Player of Tournament</div>
+        <div class="info-card-val green">Sai Sudarshan</div>
+      </div>
+    </div>
+    <div class="season-table-wrap">
+      <table>
+        <thead><tr>
+          <th>#</th><th>Player</th>
+          <th>Match Wins</th><th>POTM</th>
+          <th>Orange Cap</th><th>Purple Cap</th>
+          <th>IPL Winner</th><th>POTT</th>
+          <th>Total</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="rank-badge"><span class="badge badge-gold">1st</span></td><td>Vivek</td><td class="num">46</td><td class="num">6</td><td class="num">0</td><td class="num">0</td><td class="num">5</td><td class="num">5</td><td class="num">70</td></tr>
+          <tr><td class="rank-badge"><span class="badge badge-silver">2nd</span></td><td>Rudra</td><td class="num">43</td><td class="num">7</td><td class="num">0</td><td class="num">0</td><td class="num">5</td><td class="num">0</td><td class="num">60</td></tr>
+          <tr><td class="rank-badge"><span class="badge badge-bronze">3rd</span></td><td>Sahil</td><td class="num">32</td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num">5</td><td class="num">0</td><td class="num">50</td></tr>
+          <tr><td>4</td><td>Vikrant</td><td class="num">37</td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">46</td></tr>
+          <tr><td>5</td><td>Abhi</td><td class="num">36</td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">40</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+  <!-- 2024 -->
+  <div class="tab-content" id="s2024">
+    <div class="season-info">
+      <div class="info-card">
+        <div class="info-card-label">🏆 Season Winner</div>
+        <div class="info-card-val">Abhi</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">🏏 IPL Champion</div>
+        <div class="info-card-val purple">KKR</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">🟠 Orange Cap</div>
+        <div class="info-card-val orange">Virat Kohli</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">🟣 Purple Cap</div>
+        <div class="info-card-val purple">Harshal Patel</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">⭐ Player of Tournament</div>
+        <div class="info-card-val green">Sunil Narine</div>
+      </div>
+    </div>
+    <div class="season-table-wrap">
+      <table>
+        <thead><tr>
+          <th>#</th><th>Player</th>
+          <th>Match Wins</th><th>POTM</th>
+          <th>Orange Cap</th><th>Purple Cap</th>
+          <th>IPL Winner</th><th>POTT</th>
+          <th>Total</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="rank-badge"><span class="badge badge-gold">1st</span></td><td>Abhi</td><td class="num">45</td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">53</td></tr>
+          <tr><td class="rank-badge"><span class="badge badge-silver">2nd</span></td><td>Vikrant</td><td class="num">34</td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">41</td></tr>
+          <tr><td class="rank-badge"><span class="badge badge-bronze">3rd</span></td><td>Cap</td><td class="num">30</td><td class="num">2</td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">40</td></tr>
+          <tr><td>4</td><td>Rudra</td><td class="num">10</td><td class="num">2</td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">17</td></tr>
+         
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 2023 -->
+  <div class="tab-content" id="s2023">
+    <div class="season-info">
+      <div class="info-card">
+        <div class="info-card-label">🏆 Season Winner</div>
+        <div class="info-card-val">Abhi</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">🏏 IPL Champion</div>
+        <div class="info-card-val purple">CSK</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">🟠 Orange Cap</div>
+        <div class="info-card-val orange">Shubman Gill</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">🟣 Purple Cap</div>
+        <div class="info-card-val purple">Mohammed Shami</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">⭐ Player of Tournament</div>
+        <div class="info-card-val green">Shubman Gill</div>
+      </div>
+    </div>
+    <div class="season-table-wrap">
+      <table>
+        <thead><tr>
+          <th>#</th><th>Player</th>
+          <th>Match Wins</th><th>POTM</th>
+          <th>Orange Cap</th><th>Purple Cap</th>
+          <th>IPL Winner</th><th>POTT</th>
+          <th>Total</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="rank-badge"><span class="badge badge-gold">1st</span></td><td>Abhi</td><td class="num">40</td><td class="num">8</td><td class="num">0</td><td class="num">5</td><td class="num">5</td><td class="num">0</td><td class="num">64</td></tr>
+          <tr><td class="rank-badge"><span class="badge badge-silver">2nd</span></td><td>Cap</td><td class="num">39</td><td class="num">5</td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">54</td></tr>
+          <tr><td class="rank-badge"><span class="badge badge-bronze">3rd</span></td><td>Vikrant</td><td class="num">34</td><td class="num">4</td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">47</td></tr>
+ 
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 2022 -->
+  <div class="tab-content" id="s2022">
+    <div class="season-info">
+      <div class="info-card">
+        <div class="info-card-label">🏆 Season Winner</div>
+        <div class="info-card-val">Vikrant</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">🏏 IPL Champion</div>
+        <div class="info-card-val purple">GT</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">🟠 Orange Cap</div>
+        <div class="info-card-val orange">Jos Buttler</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">🟣 Purple Cap</div>
+        <div class="info-card-val purple">Yuzvendra Chahal</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">⭐ Player of Tournament</div>
+        <div class="info-card-val green">Jos Buttler</div>
+      </div>
+    </div>
+    <div class="season-table-wrap">
+      <table>
+        <thead><tr>
+          <th>#</th><th>Player</th>
+          <th>Match Wins</th><th>POTM</th>
+          <th>Orange Cap</th><th>Purple Cap</th>
+          <th>IPL Winner</th><th>POTT</th>
+          <th>Total</th>
+  
+        </tr></thead>
+        <tbody>
+          <tr><td class="rank-badge"><span class="badge badge-gold">1st</span></td><td>Vikrant</td>
+          <tr><td class="rank-badge"><span class="badge badge-silver">2nd</span></td><td>Vivek</td>
+          <tr><td class="rank-badge"><span class="badge badge-bronze">3rd</span></td><td>Abhi</td>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 2021 -->
+  <div class="tab-content" id="s2021">
+    <div class="season-info">
+      <div class="info-card">
+        <div class="info-card-label">🏆 Season Winner</div>
+        <div class="info-card-val">Vivek</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">🏏 IPL Champion</div>
+        <div class="info-card-val purple">CSK</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">🟠 Orange Cap</div>
+        <div class="info-card-val orange">Ruturaj Gaikwad</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">🟣 Purple Cap</div>
+        <div class="info-card-val purple">Harshal Patel</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">⭐ Player of Tournament</div>
+        <div class="info-card-val green">Harshal Patel</div>
+      </div>
+    </div>
+    <div class="season-table-wrap">
+      <table>
+        <thead><tr>
+          <th>#</th><th>Player</th>
+          <th>Match Wins</th><th>POTM</th>
+          <th>Orange Cap</th><th>Purple Cap</th>
+          <th>IPL Winner</th><th>POTT</th>
+          <th>Total</th>
+        
+        </tr></thead>
+        <tbody>
+          <tr><td class="rank-badge"><span class="badge badge-gold">1st</span></td><td>Vivek</td>
+          <tr><td class="rank-badge"><span class="badge badge-silver">2nd</span></td><td>Abhi</td>
+          <tr><td class="rank-badge"><span class="badge badge-bronze">3rd</span></td><td>Vikrant</td>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- HALL OF FAME / WINNERS -->
+<section id="winners">
+  <div class="section-header">
+    <h2 class="section-title">Hall of Fame</h2>
+    <span class="section-tag">Season Champions</span>
+  </div>
+  <div class="winners-grid">
+    <div class="winner-card">
+      <div class="wc-trophy">🏆</div>
+      <div class="wc-season">IPL 2025</div>
+      <div class="wc-winner">Vivek</div>
+      <div class="wc-pts">Season High: <span>70 pts</span></div>
+      <div class="wc-row">IPL Champion: <strong>RCB</strong></div>
+      <div class="wc-row">Orange Cap: <strong>Sai Sudarshan</strong></div>
+      <div class="wc-row">Purple Cap: <strong>Prasidh Krishna</strong></div>
+    </div>
+
+  <div class="winners-grid">
+    <div class="winner-card">
+      <div class="wc-trophy">🏆</div>
+      <div class="wc-season">IPL 2024</div>
+      <div class="wc-winner">Abhi</div>
+      <div class="wc-pts">Season High: <span>53 pts</span></div>
+      <div class="wc-row">IPL Champion: <strong>KKR</strong></div>
+      <div class="wc-row">Orange Cap: <strong>Virat Kohli</strong></div>
+      <div class="wc-row">Purple Cap: <strong>Harshal Patel</strong></div>
+    </div>
+    <div class="winner-card">
+      <div class="wc-trophy">🏆</div>
+      <div class="wc-season">IPL 2023</div>
+      <div class="wc-winner">Abhi</div>
+      <div class="wc-pts">Season High: <span>64 pts</span></div>
+      <div class="wc-row">IPL Champion: <strong>CSK</strong></div>
+      <div class="wc-row">Orange Cap: <strong>Shubman Gill</strong></div>
+      <div class="wc-row">Purple Cap: <strong>Mohammed Shami</strong></div>
+    </div>
+    <div class="winner-card">
+      <div class="wc-trophy">🏆</div>
+      <div class="wc-season">IPL 2022</div>
+      <div class="wc-winner">Vikrant</div>
+      <div class="wc-pts">Season High: <span>No record</span></div>
+      <div class="wc-row">IPL Champion: <strong>GT</strong></div>
+      <div class="wc-row">Orange Cap: <strong>Jos Buttler</strong></div>
+      <div class="wc-row">Purple Cap: <strong>Yuzvendra Chahal</strong></div>
+    </div>
+    <div class="winner-card">
+      <div class="wc-trophy">🏆</div>
+      <div class="wc-season">IPL 2021</div>
+      <div class="wc-winner">Vivek</div>
+      <div class="wc-pts">Season High: <span>No record</span></div>
+      <div class="wc-row">IPL Champion: <strong>CSK</strong></div>
+      <div class="wc-row">Orange Cap: <strong>Ruturaj Gaikwad</strong></div>
+      <div class="wc-row">Purple Cap: <strong>Harshal Patel</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- RECORDS -->
+<section id="records">
+  <div class="section-header">
+    <h2 class="section-title">Records</h2>
+    <span class="section-tag">All-time bests</span>
+  </div>
+  <div class="records-grid">
+    <div class="record-card">
+      <div class="record-icon">🔥</div>
+      <div class="record-val">Vivek</div>
+      <div class="record-desc">Most Total Points (164)</div>
+    </div>
+    
+    <div class="record-card">
+      <div class="record-icon">🥇</div>
+      <div class="record-val">Abhi & Vivek</div>
+      <div class="record-desc">Most Season Wins (2)</div>
+    </div>
+    <div class="record-card">
+      <div class="record-icon">🤝</div>
+      <div class="record-val">Abhi</div>
+      <div class="record-desc">Most POTM Guess (13)</div>
+    </div>
+    <div class="record-card">
+      <div class="record-icon">📈</div>
+      <div class="record-val">70 pts</div>
+      <div class="record-desc">Highest Season Score (Vivek'25)</div>
+    </div>
+    
+    <div class="record-card">
+      <div class="record-icon">🏏</div>
+      <div class="record-val">8</div>
+      <div class="record-desc">Most POTM in Season (Abhi'23)</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SCORING SYSTEM -->
+<section id="scoring">
+  <div class="section-header">
+    <h2 class="section-title">Scoring System</h2>
+    <span class="section-tag">How points are earned</span>
+  </div>
+  <div class="scoring-grid">
+    <div class="score-item">
+      <div class="score-item-label">✅ Correct Match Winner</div>
+      <div class="score-item-pts">1 pts</div>
+    </div>
+    <div class="score-item">
+      <div class="score-item-label">⭐ Correct Player of Match</div>
+      <div class="score-item-pts">2 pts</div>
+    </div>
+    <div class="score-item">
+      <div class="score-item-label">🟠 Correct Orange Cap</div>
+      <div class="score-item-pts">3 pts</div>
+    </div>
+    <div class="score-item">
+      <div class="score-item-label">🟣 Correct Purple Cap</div>
+      <div class="score-item-pts">3 pts</div>
+    </div>
+    <div class="score-item">
+      <div class="score-item-label">🏏 Correct IPL Winner</div>
+      <div class="score-item-pts">5 pts</div>
+    </div>
+    <div class="score-item">
+      <div class="score-item-label">🌟 Player of Tournament</div>
+      <div class="score-item-pts">5 pts</div>
+    </div>
+  </div>
+  <p style="margin-top:1.2rem; font-size:0.82rem; color:var(--text-muted); font-family:'Barlow Condensed',sans-serif; letter-spacing:0.5px;">
+    * Match predictions must be sent on WhatsApp before the toss varna prediction apni gand me daal lo.
+  </p>
+</section>
+
+<footer>
+  <span>Hdhsiebx </span> · Since 2021 · 5 years
+</footer>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // Animate numbers on scroll
+  function animateCounters() {
+    document.querySelectorAll('.hero-stat-num').forEach(el => {
+      const target = parseInt(el.textContent);
+      if (isNaN(target)) return;
+      let curr = 0;
+      const step = Math.ceil(target / 40);
+      const timer = setInterval(() => {
+        curr = Math.min(curr + step, target);
+        el.textContent = curr;
+        if (curr >= target) clearInterval(timer);
+      }, 30);
+    });
+  }
+
+  // Intersection observer for hero
+  const heroObs = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) { animateCounters(); heroObs.disconnect(); }
+  }, { threshold: 0.5 });
+  heroObs.observe(document.querySelector('.hero'));
+
+  // Fade-in on scroll for sections
+  const fadeEls = document.querySelectorAll('section, .winner-card, .lb-row, .record-card');
+  const fadeObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        fadeObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  fadeEls.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(18px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    fadeObs.observe(el);
+  });
+</script>
+</body>
+</html>
